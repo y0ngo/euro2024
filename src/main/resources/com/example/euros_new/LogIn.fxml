@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Downloads/euro.png" />
+                  <Image url="@../../../../../../assets/euro.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="52.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View upcomng games here " />
@@ -33,7 +33,7 @@
             <TextField fx:id="passwordTextfield" layoutX="97.0" layoutY="276.0" promptText="Enter Password " />
             <Button fx:id="loginBtn" layoutX="204.0" layoutY="355.0" mnemonicParsing="false" onAction="#loginHandler" text="Login " />
             <Button fx:id="cancelBtn" layoutX="85.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelHandler" text="Cancel " />
-            <Hyperlink fx:id="registerHandler" layoutX="60.0" layoutY="412.0" text="Dont have an account? Click here to register" />
+            <Hyperlink fx:id="registerLink" layoutX="60.0" layoutY="412.0" onAction="#registerHandler" text="Dont have an account? Click here to register" />
          </children>
       </AnchorPane>
    </children>

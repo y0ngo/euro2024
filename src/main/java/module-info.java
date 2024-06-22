@@ -2,6 +2,8 @@ module com.example.euros_new {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires unirest.java;
+    requires gson;
 
 
     opens com.example.euros_new to javafx.fxml;
