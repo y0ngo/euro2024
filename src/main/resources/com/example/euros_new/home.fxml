@@ -3,29 +3,47 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.euros_new.HomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0000FF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.euros_new.HomeController">
    <children>
-      <MenuBar layoutY="73.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.bottomAnchor="301.6666666666667" AnchorPane.rightAnchor="0.0">
+      <MenuBar layoutY="72.0" prefHeight="25.0" prefWidth="572.0" AnchorPane.bottomAnchor="302.6666666666667" AnchorPane.rightAnchor="487.33333333333326">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="teamBtn" mnemonicParsing="false" onAction="#goToTeamHandler" text="Teams">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu fx:id="playerBtn" mnemonicParsing="false" onAction="#goToPlayerHandler" text="Players ">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="matchBtn" mnemonicParsing="false" onAction="#goToMatchHandler" text="Matches ">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+            <Menu fx:id="groupBtn" mnemonicParsing="false" onAction="#goToGroupHandler" text="Groups ">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
+      <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="196.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../assets/euro.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="138.0" fitWidth="227.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../assets/EuroPlayer.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="256.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Euro 2024 Stat tracker where you can find information as to what teams are currently playing, stats of individual players or upcoming matches for each of the nations qualified " wrappingWidth="255.33328247070312" />
    </children>
 </AnchorPane>
