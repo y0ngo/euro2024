@@ -4,6 +4,7 @@ module com.example.euros_new {
     requires java.sql;
     requires unirest.java;
     requires gson;
+    requires java.logging;
 
 
     opens com.example.euros_new to javafx.fxml;

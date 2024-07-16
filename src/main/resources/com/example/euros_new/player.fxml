@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.euros_new.PlayerController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="464.0" prefWidth="672.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="com.example.euros_new.PlayerController">
+    <TableView fx:id="tableView" layoutX="6.0" layoutY="234.0" prefHeight="216.0" prefWidth="657.0">
+        <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="goalsColumn" prefWidth="50.0" text="Goals" />
+            <TableColumn fx:id="assistsColumn" prefWidth="50.0" text="Assists" />
+            <TableColumn fx:id="appearancesColumn" prefWidth="100.0" text="Appearances" />
+            <TableColumn fx:id="firstTeamAppearancesColumn" prefWidth="150.0" text="First Team Appearances" />
+            <TableColumn fx:id="minutesPlayedColumn" prefWidth="100.0" text="Minutes Played" />
+            <TableColumn fx:id="teamNameColumn" prefWidth="100.0" text="Team Name" />
+        </columns>
+    </TableView>
+   <Button fx:id="goalBtn" layoutX="270.0" layoutY="141.0" mnemonicParsing="false" onAction="#goalHandler" text="Top Goal Scorers" />
+   <Button layoutX="270.0" layoutY="183.0" mnemonicParsing="false" onAction="#assistHandler" prefHeight="25.0" prefWidth="106.0" text="Top Assister" />
+   <TextField fx:id="idTextField" layoutX="270.0" layoutY="105.0" prefHeight="25.0" prefWidth="172.0" promptText="Enter Player ID to find stats " />
+   <Button fx:id="idButton" layoutX="481.0" layoutY="105.0" mnemonicParsing="false" onAction="#idHandler" text="Enter" />
+   <MenuBar layoutX="4.0" layoutY="56.0" prefHeight="25.0" prefWidth="665.0">
+      <menus>
+         <Menu fx:id="teamBtn" mnemonicParsing="false" onAction="#goToTeamHandler" text="Teams">
+            <items>
+               <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+         </Menu>
+         <Menu fx:id="homeBtn" mnemonicParsing="false" onAction="#goToHomeHandler" text="Home">
+            <items>
+               <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+         </Menu>
+         <Menu fx:id="matchBtn" mnemonicParsing="false" onAction="#goToMatchHandler" text="Matches ">
+            <items>
+               <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+         </Menu>
+         <Menu fx:id="groupBtn" mnemonicParsing="false" onAction="#goToGroupHandler" text="Groups ">
+            <items>
+               <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
+   <ImageView fitHeight="49.0" fitWidth="113.0" layoutX="272.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../../../../assets/euro.png" />
+      </image>
+   </ImageView>
 </AnchorPane>
