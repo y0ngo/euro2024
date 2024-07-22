@@ -22,6 +22,11 @@ public class Api {
     private String captain;
     private String championships;
     private String runnersUp;
+    private String stage;
+    private String date;
+    private String description;
+    private String winningTeam;
+
 
     public Api(String name, int goals, int assists, int appearances, int firstTeamAppearances, int minutesPlayed, String teamName) {
         this.name = name;
@@ -40,6 +45,14 @@ public class Api {
         this.runnersUp=runnersUp;
 
     }
+    public Api(String stage,String date,String description,String winningTeam){
+        this.stage=stage;
+        this.date=date;
+        this.description=description;
+        this.winningTeam=winningTeam;
+
+
+    }
 
 
     public String getName() { return name; }
@@ -53,6 +66,20 @@ public class Api {
     public String getCoach(){return coach;}
     public String getChampionships(){return championships;}
     public String getRunnersUp(){return runnersUp;}
+
+    public String getStage() {return stage;}
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getWinningTeam() {
+        return winningTeam;
+    }
 
     public String toFormattedString() {
         return "Name: " + name + "\n" +
@@ -69,6 +96,12 @@ public class Api {
                 "Captain: " + captain + "\n" +
                 "Championships: " + championships + "\n" +
                 "Runners Up: " + runnersUp;
+    }
+    public String matchToFormattedString(){
+        return "Stage: "+ stage +"\n"+
+                "Date: "+date+"\n"+
+                "Description: "+description+"\n"+
+                "Winning Team: "+winningTeam;
     }
 
     public static List<Api> topScorer() throws Exception {
@@ -263,7 +296,7 @@ public class Api {
 
 
 
-    public static void displayAllMatches(){
+    public static List <Api> displayAllMatches()throws UnsupportedEncodingException{
         String host = "https://euro-20242.p.rapidapi.com/matches";
         String charset = "UTF-8";
         String x_rapidapi_host = "euro-20242.p.rapidapi.com";
@@ -285,14 +318,24 @@ public class Api {
         // Json response
 
         //Prettifying
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(response.getBody().toString());
-        String prettyJsonString = gson.toJson(je);
-        System.out.println(prettyJsonString);
+        Gson gson = new Gson();
+        JsonArray jsonArray = gson.fromJson(response.getBody().toString(), JsonArray.class);
+        List<Api>displayAllMatches = new ArrayList<>();
+        for (JsonElement element : jsonArray) {
+            JsonObject jsonObject = element.getAsJsonObject();
+            Api match = new Api(
+                    jsonObject.get("stage").getAsString(),
+                    jsonObject.get("date").getAsString(),
+                    jsonObject.get("description").getAsString(),
+                    jsonObject.get("winningTeam").getAsString()
 
 
+            );
+            displayAllMatches.add(match);
+        }
+        return displayAllMatches;
     }
+
     public static void displayAllGroups(){
         String host = "https://euro-20242.p.rapidapi.com/groups";
         String charset = "UTF-8";
@@ -353,9 +396,9 @@ public class Api {
 
     public static void main(String[] args) {
         try {
-            List<Api> allTeams = displayAllTeams();
-            for (Api team : allTeams) {
-                System.out.println(team.teamToFormattedString());
+            List<Api> allMatches = displayAllMatches();
+            for (Api match: allMatches) {
+                System.out.println(match.matchToFormattedString());
                 System.out.println("-------------------------");
             }
         } catch (Exception e) {

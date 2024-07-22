@@ -25,7 +25,7 @@ public class App extends Application {
 
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("player.fxml"));
+            loader.setLocation(getClass().getResource("team.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 640, 480);
             secondaryStage.setScene(scene);
